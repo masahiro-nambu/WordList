@@ -28,16 +28,24 @@ class QuestionViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     override func viewWillAppear(animated: Bool) {
         wordArray = saveData.arrayForKey("WORD")!
         
         shuffle()
         questionLabel.text = shuffledWordArray[nowNumber]["english"] as? String
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func shuffle() {
+        while wordArray.count > 0 {
+            let index = Int(rand()) % wordArray.count
+            shuffledWordArray.append(wordArray[index])
+            wordArray.removeAtIndex(index)
+        }
     }
     
     @IBAction func nextButtonPushed() {
@@ -69,13 +77,5 @@ class QuestionViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    func shuffle() {
-        while wordArray.count > 0 {
-            let index = Int(rand()) % wordArray.count
-            shuffledWordArray.append(wordArray[index])
-            wordArray.removeAtIndex(index)
-        }
-    }
 
 }
