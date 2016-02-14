@@ -9,6 +9,7 @@
 import UIKit
 
 class ListTableViewController: UITableViewController {
+    var a: Int = 0
     
     var wordArray: [AnyObject] = []
     let saveData = NSUserDefaults.standardUserDefaults()
